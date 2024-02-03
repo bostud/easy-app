@@ -1,29 +1,19 @@
-import math
+import datetime
 from typing import Optional
 
-from pydantic import BaseModel, Field, validator, Extra
+from pydantic import BaseModel, Field, Extra
 
 
 class CreateItem(BaseModel):
     class Config:
         extra = Extra.ignore
 
-    name: str = Field(..., max_length=50)
+    title: str = Field(..., max_length=50)
+    start_datetime: datetime.datetime = Field(
+        default_factory=datetime.datetime.now,
+    )
     description: Optional[str] = Field(None, max_length=250)
-    items_count: int = 0
-
-    @validator('items_count')
-    def validate_items_count(cls, v):
-        max_value = math.pow(2, 31)
-
-        if int(v) > max_value:
-            raise ValueError('value must be lower that %s' % max_value)
-        return v
 
 
-class UpdateItem(CreateItem):
-    item_id: int
-
-
-class Item(UpdateItem):
-    author_ip: str
+class Item(CreateItem):
+    item_id: str

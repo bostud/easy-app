@@ -1,15 +1,9 @@
 
 build:
-	docker-compose build app postgres_db redis
+	docker-compose build app redis
 
 run:
 	docker-compose up app
 
-rebuild:
-	docker-compose up --build --force-recreate app
-
-migrate:
-	docker exec walle_app python run_migrations.py
-
 dev-test:
-	docker exec walle_app pytest tests/
+	docker exec easy_app pytest -v tests/

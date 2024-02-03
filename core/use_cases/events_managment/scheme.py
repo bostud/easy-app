@@ -1,11 +1,11 @@
+import datetime
 from dataclasses import dataclass
 from typing import Optional
 
 
 @dataclass
-class ItemData:
-    item_id: int
-    name: str
-    items_count: int
-    author_ip: str
+class Event:
+    item_id: str
+    title: str
+    start_datetime: datetime.datetime
     description: Optional[str] = None

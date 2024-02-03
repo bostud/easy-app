@@ -1,5 +1,5 @@
-# wall-e
-A fast-fire repeater
+# easy-app
+API access manager
 
 
 # Setup env
@@ -12,7 +12,6 @@ A fast-fire repeater
 # Commands
 - __make build__ - build application
 - __make run__ - up initial application
-- __make rebuild__ - up & build application with **force-recreate** flag
 - __make migrate__ - create initial tables; run after launch application
 - __make dev-test__ - run test on dev env
 

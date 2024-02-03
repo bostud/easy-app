@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 
 from api.routes import register_routes
-from config import DEBUG
+from dotenv import load_dotenv
+
+DEBUG = load_dotenv("DEBUG", ) or False
 
 app = FastAPI(
     debug=DEBUG,
-    title='Wall-E API',
+    title='Easy APP API',
     docs_url='/api/docs',
 )
 register_routes(app)
